@@ -2,19 +2,23 @@ import React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
 
-const Header = () => {
+export const Header = () => {
     return (
         <View style={styles.container}>
             <Image source={require('../../assets/header-logo.png')} style={styles.logo} />
             <View style={styles.iconsContainer}>
                 <TouchableOpacity onPress={() => console.log('Like')}>
                     <AntDesign name="hearto" size={24} color="white" />
+                    <View style={styles.dot} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => console.log('Messenger')}>
+                    <Image style={styles.icon} source={{
+                        uri: 'https://img.icons8.com/fluency-systems-regular/60/ffffff/facebook-messenger.png'
+                    }} />
                     <View style={styles.badge}>
-                        <Text style={styles.badgeText}>3</Text>
+                        <Text style={styles.badgeText}>13</Text>
                     </View>
-                    <FontAwesome name="comment-o" size={24} color="white" />
+
 
                 </TouchableOpacity>
             </View>
@@ -37,6 +41,27 @@ const styles = StyleSheet.create({
     },
     iconsContainer: {
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        width: 80
+    },
+    icon: {
+        height: 30,
+        width: 30,
+        resizeMode: 'contain',
+        marginLeft: 8
+    },
+    dot: {
+        backgroundColor: 'red',
+        borderRadius: 10,
+        width: 8,
+        height: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 5,
+        position: 'absolute',
+        bottom: 17,
+        left: 14
     },
     badge: {
         backgroundColor: 'red',
@@ -46,11 +71,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 5,
+        position: 'absolute',
+        bottom: 15,
+        left: 15
     },
     badgeText: {
         color: 'white',
         fontSize: 12,
+        position: 'absolute',
+        zIndex: 100,
     },
 });
-
-export default Header;

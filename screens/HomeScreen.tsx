@@ -2,12 +2,22 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { USERS } from '../data/users';
 import { POSTS } from "../data/posts";
-import Header from '../components/home/Header';
+import { Header } from '../components/home/Header';
+import { Stories, Story, StoryList } from '../components/home/Stories';
+import { StoryItem } from '../components/home/Stories';
 
 const HomeScreen = () => {
+    let stories: StoryList = {
+        stories: USERS.map((user) => ({
+            picture: user.profilePicture,
+            username: user.username,
+        })),
+    };
+
     return (
         <View style={styles.container}>
             <Header />
+            <Stories stories={stories.stories} />
         </View>
     );
 };

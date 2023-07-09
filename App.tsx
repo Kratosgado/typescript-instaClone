@@ -4,8 +4,9 @@ import HomeScreen from './screens/HomeScreen';
 
 export default function App() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
       <HomeScreen />
+      <StatusBar style='auto' hidden={true} />
     </SafeAreaView>
   );
 }
