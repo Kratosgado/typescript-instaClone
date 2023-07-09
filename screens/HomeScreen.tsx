@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { USERS } from '../data/users';
 import { POSTS } from "../data/posts";
 import Header from '../components/home/Header';
