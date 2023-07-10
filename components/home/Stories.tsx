@@ -12,7 +12,7 @@ export type StoryList = {
 
 export const Stories: React.FC<StoryList> = ({ stories }) => {
     return (
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ marginRight: 16 }}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ marginRight: 16, marginBottom: 30 }}>
             {stories.map((story) => (
                 <View key={story.username} style={styles.storyItem}>
                     <Story picture={story.picture} username={story.username} />
@@ -30,6 +30,7 @@ export const Story = ({ picture, username }: StoryItem) => (
         <Text style={styles.username}> {username} </Text>
     </View>
 );
+
 const styles = StyleSheet.create({
     storyContainer: {
         backgroundColor: '#FFFFFF',

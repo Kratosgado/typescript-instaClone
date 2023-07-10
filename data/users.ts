@@ -1,7 +1,7 @@
 export const USERS = [
     {
         id: 'user1',
-        username: 'john_doe',
+        username: 'Kratos',
         profilePicture: 'https://pbs.twimg.com/profile_images/1634523963819786240/m_LFngKS_400x400.jpg',
         posts: 12,
         followers: 456,
@@ -10,7 +10,7 @@ export const USERS = [
     },
     {
         id: 'user2',
-        username: 'jane_smith',
+        username: 'Mbeah',
         profilePicture: 'https://avatars.githubusercontent.com/u/29388627?v=4',
         posts: 8,
         followers: 234,
@@ -19,7 +19,7 @@ export const USERS = [
     },
     {
         id: 'user3',
-        username: 'alex_wilson',
+        username: 'Prince',
         profilePicture: 'https://randomuser.me/api/portraits/men/31.jpg',
         posts: 15,
         followers: 789,
@@ -28,7 +28,7 @@ export const USERS = [
     },
     {
         id: 'user4',
-        username: 'lily_jones',
+        username: 'Jeffery',
         profilePicture: 'https://randomuser.me/api/portraits/women/2.jpg',
         posts: 5,
         followers: 123,
@@ -36,8 +36,8 @@ export const USERS = [
         bio: 'Art Enthusiast | Music Lover',
     },
     {
-        id: 'user1',
-        username: 'john_doe',
+        id: 'user5',
+        username: 'Kill Code',
         profilePicture: 'https://pbs.twimg.com/profile_images/1634523963819786240/m_LFngKS_400x400.jpg',
         posts: 12,
         followers: 456,
@@ -45,8 +45,8 @@ export const USERS = [
         bio: 'Photographer | Nature Lover',
     },
     {
-        id: 'user2',
-        username: 'jane_smith',
+        id: 'user6',
+        username: 'All the long names',
         profilePicture: 'https://avatars.githubusercontent.com/u/29388627?v=4',
         posts: 8,
         followers: 234,
@@ -54,8 +54,8 @@ export const USERS = [
         bio: 'Travel Enthusiast | Food Lover',
     },
     {
-        id: 'user3',
-        username: 'alex_wilson',
+        id: 'user7',
+        username: 'Kill it ',
         profilePicture: 'https://randomuser.me/api/portraits/men/31.jpg',
         posts: 15,
         followers: 789,
@@ -63,8 +63,8 @@ export const USERS = [
         bio: 'Fitness Freak | Dog Lover',
     },
     {
-        id: 'user4',
-        username: 'lily_jones',
+        id: 'user8',
+        username: 'A new boy',
         profilePicture: 'https://randomuser.me/api/portraits/women/2.jpg',
         posts: 5,
         followers: 123,
