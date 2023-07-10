@@ -11,6 +11,7 @@ const HomeScreen = () => {
         stories: USERS.map((user) => ({
             picture: user.profilePicture,
             username: user.username,
+            id: user.id
         })),
     };
 
@@ -28,7 +29,7 @@ const HomeScreen = () => {
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 {posts.map((post) => (
-                    <Post key={post.username} {...post} />
+                    <Post {...post} />
                 ))}
             </ScrollView>
         </View>

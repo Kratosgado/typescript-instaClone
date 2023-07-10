@@ -2,8 +2,9 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 export type StoryItem = {
-    picture: string;
-    username: string;
+    id: string,
+    picture: string,
+    username: string,
 }
 export type StoryList = {
     stories: StoryItem[];
@@ -12,10 +13,10 @@ export type StoryList = {
 
 export const Stories: React.FC<StoryList> = ({ stories }) => {
     return (
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ marginRight: 16, marginBottom: 30 }}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ marginRight: 16, height: 200 }}>
             {stories.map((story) => (
                 <View key={story.username} style={styles.storyItem}>
-                    <Story picture={story.picture} username={story.username} />
+                    <Story id={story.id} picture={story.picture} username={story.username} />
                 </View>
             ))
             }

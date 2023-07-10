@@ -4,10 +4,12 @@
     "slug": "typescript-instaClone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/instagram_logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/instagram_logo.png",
+      "height": 200,
+      "width": 200,
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
