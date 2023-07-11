@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign, Octicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import HomeScreen from "../../screens/HomeScreen";
 import { SearchScreen } from "../../screens/SearchScreen";
 import { ReelScreen } from "../../screens/ReelScreen";
@@ -11,13 +11,20 @@ const Tab = createBottomTabNavigator();
 
 export const BottomBar = () => {
     return (
-        <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Navigator screenOptions={{
+            headerShown: false,
+            tabBarActiveTintColor: "white",
+            tabBarShowLabel: false,
+            tabBarInactiveBackgroundColor: "black",
+            tabBarActiveBackgroundColor: "black",
+            headerStatusBarHeight: 200,
+        }}>
             <Tab.Screen
                 name="HomeScreen"
                 component={HomeScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home" size={size} color={color} />
+                        <MaterialCommunityIcons name="home-variant" size={size} color={color} />
                     ),
                 }}
             />
@@ -35,7 +42,7 @@ export const BottomBar = () => {
                 component={AddPostScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="add-outline" size={size} color={color} />
+                        <AntDesign name="plussquareo" size={size} color={color} />
                     ),
                 }}
             />
@@ -44,7 +51,7 @@ export const BottomBar = () => {
                 component={ReelScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="md-videocam-outline" size={size} color={color} />
+                        <Octicons name="video" size={size} color={color} />
                     ),
                 }}
             />

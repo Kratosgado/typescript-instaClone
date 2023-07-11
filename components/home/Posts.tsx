@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Divider } from 'react-native-elements';
-import { Ionicons, Feather, FontAwesome, AntDesign } from '@expo/vector-icons';
+import { Ionicons, Feather, FontAwesome, Entypo } from '@expo/vector-icons';
 
 export type PostProps = {
     username: string;
@@ -15,7 +15,7 @@ export const Post: React.FC<PostProps> = (postProps: PostProps) => {
 
     return (
         <View style={styles.container}>
-            <Divider width={1} color='white' />
+            <Divider width={0.5} color='white' />
             <PostHeader username={username} profilePicture={profilePicture} />
             <PostImage image={image} />
             <PostFooter caption={caption} />
@@ -35,7 +35,7 @@ const PostHeader: React.FC<PostHeaderProps> = ({ username, profilePicture }) => 
                 <Image source={{ uri: profilePicture }} style={styles.profilePicture} />
                 <Text style={styles.username}>{username}</Text>
             </View>
-            <FontAwesome name="dot-circle-o" size={24} color='white' />
+            <Entypo name="dots-three-vertical" size={24} color='white' />
         </View>
     );
 };
@@ -91,7 +91,7 @@ const PostFooter: React.FC<PostFooterProps> = ({ caption }) => {
             </View>
             <View style={styles.commentContainer}>
                 <Image
-                    source={{ uri: 'https://example.com/user-profile.jpg' }}
+                    source={{ uri: 'https://avatars.githubusercontent.com/u/29388627?v=4' }}
                     style={styles.profileImage}
                 />
                 <TextInput

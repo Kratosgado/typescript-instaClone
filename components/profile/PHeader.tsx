@@ -1,28 +1,26 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 
-export const Header = () => {
+export const PHeader = () => {
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Image source={require('../../assets/header-logo.png')} style={styles.logo} />
+            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                <Text style={styles.username}>mbeah_essilfie</Text>
                 <AntDesign name="down" size={16} color='white' />
             </View>
 
             <View style={styles.iconsContainer}>
-                <TouchableOpacity onPress={() => console.log('Like')}>
-                    <AntDesign name="hearto" size={24} color="white" />
-                    <View style={styles.dot} />
+                <TouchableOpacity>
+                    <Image
+                        style={styles.icon}
+                        source={{
+                            uri: 'https://img.icons8.com/fluency-systems-regular/60/ffffff/plus-2-math.png',
+                        }}
+                    />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => console.log('Messenger')}>
-                    <Image style={styles.icon} source={{
-                        uri: 'https://img.icons8.com/fluency-systems-regular/60/ffffff/facebook-messenger.png'
-                    }} />
-                    <View style={styles.badge}>
-                        <Text style={styles.badgeText}>13</Text>
-                    </View>
-
+                    <Ionicons name="md-reorder-three-outline" size={30} color="white" />
 
                 </TouchableOpacity>
             </View>
@@ -37,11 +35,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 16,
         paddingVertical: 8,
-
     },
-    logo: {
+    username: {
         width: 120,
-        height: 40,
+        height: 25,
+        textAlign: "center",
+        fontSize: 16,
+        fontWeight: "bold",
+        color: "white"
     },
     iconsContainer: {
         flexDirection: 'row',
@@ -53,7 +54,8 @@ const styles = StyleSheet.create({
         height: 30,
         width: 30,
         resizeMode: 'contain',
-        marginLeft: 8
+        marginLeft: 8,
+        color: "white",
     },
     dot: {
         backgroundColor: 'red',

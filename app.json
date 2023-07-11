@@ -8,8 +8,8 @@
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/instagram_logo.png",
-      "height": 200,
-      "width": 200,
+      "height": 64,
+      "width": 64,
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

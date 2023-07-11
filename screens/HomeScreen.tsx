@@ -25,11 +25,10 @@ const HomeScreen = () => {
     return (
         <View style={styles.container}>
             <Header />
-            <Stories stories={stories.stories} />
-
             <ScrollView showsVerticalScrollIndicator={false}>
-                {posts.map((post) => (
-                    <Post {...post} />
+                <Stories stories={stories.stories} />
+                {posts.map((post, index) => (
+                    <Post key={index} {...post} />
                 ))}
             </ScrollView>
         </View>
