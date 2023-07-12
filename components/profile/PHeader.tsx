@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
         width: 30,
         resizeMode: 'contain',
         marginLeft: 8,
-        color: "white",
     },
     dot: {
         backgroundColor: 'red',

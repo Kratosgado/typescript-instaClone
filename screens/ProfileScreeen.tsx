@@ -3,6 +3,9 @@ import { PHeader } from "../components/profile/PHeader"
 import { UserInfo } from "../components/profile/UserInfo"
 import { USERS } from "../data/users"
 import { User } from "../components/profile/UserInfo"
+import { StoryHighlight } from "../components/profile/StoryHighlight"
+import { ProfileTabs } from "../components/profile/ProfileTabs"
+import { NavigationContainer } from "@react-navigation/native"
 
 
 export const ProfileScreen = () => {
@@ -12,6 +15,10 @@ export const ProfileScreen = () => {
             <PHeader />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <UserInfo {...currentUser} />
+                <StoryHighlight />
+                <NavigationContainer>
+                    <ProfileTabs />
+                </NavigationContainer>
             </ScrollView>
         </View>
     )
