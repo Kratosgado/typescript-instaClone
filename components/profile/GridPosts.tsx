@@ -11,7 +11,9 @@ export const GridPost: React.FC = () => {
       id: String(index),
       imageUrl: post.imageUrl
     }))
-  
+    
+    posts = posts.flatMap((item )=>[item, item]) // double the posts list
+    
     const renderItem = ({ item }: { item: PostProps }) => {
       return (
         <View style={styles.item}>
@@ -29,7 +31,8 @@ export const GridPost: React.FC = () => {
         contentContainerStyle={styles.gridContainer}
       />
     );
-  };
+};
+  
   const styles = StyleSheet.create({
     gridContainer: {
       flexGrow: 1,

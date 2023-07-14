@@ -11,13 +11,12 @@ const Tab = createBottomTabNavigator();
 
 export const BottomBar = () => {
     return (
-        <Tab.Navigator screenOptions={{
+        <Tab.Navigator  screenOptions={{
             headerShown: false,
             tabBarActiveTintColor: "white",
             tabBarShowLabel: false,
             tabBarInactiveBackgroundColor: "black",
             tabBarActiveBackgroundColor: "black",
-            headerStatusBarHeight: 200,
         }}>
             <Tab.Screen
                 name="HomeScreen"
