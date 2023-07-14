@@ -13,13 +13,9 @@ export const ProfileScreen = () => {
     return (
         <View style={styles.container}>
             <PHeader />
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <UserInfo {...currentUser} />
-                <StoryHighlight />
-                <NavigationContainer>
-                    <ProfileTabs />
-                </NavigationContainer>
-            </ScrollView>
+            <UserInfo {...currentUser} />
+            <StoryHighlight />
+            <ProfileTabs />
         </View>
     )
 }

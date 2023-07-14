@@ -1,82 +1,87 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text,useWindowDimensions, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { TabView, TabBar, SceneMap, SceneRendererProps } from 'react-native-tab-view';
 
-const Tab = createMaterialTopTabNavigator();
+import { GridPost } from './GridPosts';
 
 export const ProfileTabs = () => {
+  const layout = useWindowDimensions();
+  const [index, setIndex] = useState(0);
+
+  type TabRoute = {
+    key: string;
+    title: string;
+    icon: 'grid-outline' | 'videocam-outline' | 'person-outline';
+  };
+  
+  const [routes] = useState<TabRoute[]>([
+    { key: 'posts', title: 'Posts', icon: 'grid-outline' },
+    { key: 'reels', title: 'Reels', icon: 'videocam-outline' },
+    { key: 'saved', title: 'Saved', icon: 'person-outline' },
+  ]);
+
+  const renderScene = SceneMap({
+    posts: PostsTab,
+    reels: ReelsTab,
+    saved: SavedTab,
+  });
+
+  const renderTabBar = (props: SceneRendererProps) => (
+    <TabBar
+      {...props}
+      navigationState={{routes, index}}
+      style={styles.tabBar}
+      activeColor="white"
+      inactiveColor="#7c7575"
+      indicatorStyle={{ backgroundColor: "white" }}
+      renderIcon={({ route, color }) => (
+        <Ionicons name={route.icon} size={24} color={color} />
+      )}
+      renderLabel={() => null}
+    />
+  );
+
   return (
     <View style={styles.container}>
-      <Tab.Navigator screenOptions={{
-          tabBarActiveTintColor: "white",
-        tabBarShowLabel: false,
-        tabBarInactiveTintColor: "white",
-            tabBarShowIcon: true
-        }}>
-        <Tab.Screen
-          name="Posts"
-          component={PostsTab}
-          options={{ tabBarIcon: ({ color }) => <Ionicons name="grid-outline" color={color} size={24} /> }}
-        />
-        <Tab.Screen
-          name="Reels"
-          component={ReelsTab}
-          options={{ tabBarIcon: ({ color }) => <Ionicons name="videocam-outline" color={color} size={24} /> }}
-        />
-        <Tab.Screen
-          name="Saved"
-          component={SavedTab}
-          options={{ tabBarIcon: ({ color }) => <Ionicons name="person-outline" color={color} size={24} /> }}
-        />
-      </Tab.Navigator>
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        renderTabBar={renderTabBar}
+        initialLayout={{width: layout.width, height: layout.height}}
+      />
     </View>
   );
 };
 
 const PostsTab = () => {
+  
   return (
-    <View style={styles.tabContent}>
-      <Text>Posts Tab</Text>
-    </View>
+    <GridPost />
   );
 };
 
 const ReelsTab = () => {
   return (
-    <View style={styles.tabContent}>
-      <Text>Reels Tab</Text>
-    </View>
+    <GridPost />
   );
 };
 
 const SavedTab = () => {
   return (
-    <View style={styles.tabContent}>
-      <Text>Saved Tab</Text>
-    </View>
+    <GridPost />
   );
 };
 
-const tabBarOptions = {
-  showIcon: true,
-  showLabel: false,
-  style: {
-    backgroundColor: '#000000',
-  },
-  indicatorStyle: {
-    backgroundColor: 'white',
-  },
-};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#000000',
+    flex: 1
   },
-  tabContent: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  tabBar: {
+    backgroundColor: '#000000',
+    height: 60,
   },
 });
