@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { SignedInStack, SignedOutStack } from './navigation'
 import { onAuthStateChanged, getAuth, User } from './firebase'
 
-export const AuthNavigation = () => {
+export const AuthNavigation = ()  => {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const auth = getAuth()
 
@@ -13,5 +13,5 @@ export const AuthNavigation = () => {
     return () => unsubscribe()
   }, [auth])
 
-  return <>{currentUser ? <SignedInStack /> : <SignedOutStack />}</>
+  return <> {currentUser ? <SignedInStack /> : <SignedOutStack />}</>
 }

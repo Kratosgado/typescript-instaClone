@@ -1,5 +1,5 @@
 import React from 'react'
-import { StackHeaderProps, StackNavigationProp, createStackNavigator } from '@react-navigation/stack'
+import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { LoginScreen } from './screens/LoginScreen';
 import { SignUpScreen } from './screens/SignupScreen';
@@ -8,6 +8,12 @@ import { SafeAreaView } from 'react-native'
 import { BottomBar } from './components/home/BottomBar';
 import { FollowingScreen } from './components/home/Following';
 import { FavouriteScreen } from './components/home/Favourites';
+import { Archive } from './components/profile/SheetScreens/Archive';
+import { CloseFriends } from './components/profile/SheetScreens/CloseFriends';
+import { OrdersPayments } from './components/profile/SheetScreens/OrdersPayments';
+import { Settings } from './components/profile/SheetScreens/Settings';
+import { Supervision } from './components/profile/SheetScreens/Supervision';
+import { QRCode } from './components/profile/SheetScreens/QRCode';
 
 
 
@@ -17,8 +23,15 @@ type ScreenList = {
   SignupScreen: undefined;
   FollowingScreen: undefined;
   FavouriteScreen: undefined;
+  Archive: undefined;
+  CloseFriends: undefined;
+  OrdersPayments: undefined;
+  Settings: undefined;
+  Supervision: undefined;
+  QRCode: undefined
 };
-type Screens =  "LoginScreen" | "SignupScreen" | "FollowingScreen" | "BottomBar" | "FavouriteScreen"
+export type Screens = "LoginScreen" | "SignupScreen" | "FollowingScreen" | "BottomBar" | "FavouriteScreen" 
+              | "Archive" | "CloseFriends" | "OrdersPayments" | "Settings" | "Supervision" | "QRCode"
 
 export type NavigationProps = {
   navigation: StackNavigationProp<ScreenList, Screens>;
@@ -40,6 +53,11 @@ export const SignedInStack = () => (
            />
         <Stack.Screen name="FollowingScreen" component={FollowingScreen} />
         <Stack.Screen name="FavouriteScreen" component={FavouriteScreen} />
+        <Stack.Screen name="Archive" component={Archive} />
+        <Stack.Screen name="CloseFriends" component={CloseFriends} />
+        <Stack.Screen name="OrdersPayments" component={OrdersPayments} />
+        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="QRCode" component={QRCode} />
       </Stack.Navigator>
     </SafeAreaView>
   </NavigationContainer>

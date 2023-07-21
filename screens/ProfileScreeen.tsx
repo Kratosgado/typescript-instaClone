@@ -6,13 +6,14 @@ import { User } from "../components/profile/UserInfo"
 import { StoryHighlight } from "../components/profile/StoryHighlight"
 import { ProfileTabs } from "../components/profile/ProfileTabs"
 import { NavigationContainer } from "@react-navigation/native"
+import { NavigationProps } from "../navigation"
 
 
-export const ProfileScreen = () => {
+export const ProfileScreen: React.FC<NavigationProps> = ({navigation}) => {
     const currentUser: User = USERS[0]
     return (
         <View style={styles.container}>
-            <PHeader />
+            <PHeader navigation={navigation}/>
             <UserInfo {...currentUser} />
             <StoryHighlight />
             <ProfileTabs />
