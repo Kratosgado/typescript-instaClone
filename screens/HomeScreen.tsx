@@ -5,8 +5,9 @@ import { POSTS } from "../data/posts";
 import { Header } from '../components/home/Header';
 import { Stories, StoryList } from '../components/home/Stories';
 import { PostProps, Post } from '../components/home/Posts';
+import { NavigationProps } from '../navigation';
 
-const HomeScreen = () => {
+const HomeScreen: React.FC<NavigationProps> = ({navigation}) => {
     let stories: StoryList = {
         stories: USERS.map((user) => ({
             picture: user.profilePicture,
@@ -24,7 +25,7 @@ const HomeScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Header />
+            <Header navigation={navigation}/>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Stories stories={stories.stories} />
                 {posts.map((post, index) => (

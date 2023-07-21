@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, TextInput, Image, Text, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
+import { View, TextInput, Image, Text, StyleSheet, TouchableOpacity, Pressable, Platform, Alert } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import { NavigationProps } from '../navigation';
+import { getAuth, signInWithEmailAndPassword } from "../firebase";
 
 
 
@@ -9,10 +10,17 @@ export const LoginScreen: React.FC<NavigationProps> = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Handle login logic here
-    console.log('Login:', email, password);
-  };
+  const auth = getAuth()
+
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("Sign in Successful")
+      console.log("SignIn successful")
+    } catch (error) {
+      Platform.OS != 'web' ? Alert.alert("There was an error") : alert(error)
+    }
+  }
 
   return (
     <View style={{ flex: 1, backgroundColor: "#000" }}>
@@ -60,7 +68,7 @@ export const LoginScreen: React.FC<NavigationProps> = ({navigation}) => {
         </View>
         <View style={styles.signUpContainer}>
           <Text style={{ color: "gray" }}>Don't have an account? </Text>
-        <Pressable onPress={()=>navigation?.navigate("SignupScreen")}>
+        <Pressable onPress={()=>navigation.navigate("SignupScreen")}>
           <Text style={{ color: "#284db4", fontWeight: "bold" }}>
             Sign Up
           </Text>

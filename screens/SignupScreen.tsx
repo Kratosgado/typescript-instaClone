@@ -71,7 +71,7 @@ export const SignUpScreen: FC<NavigationProps> = ({navigation}) => {
         </View>
         <View style={styles.signUpContainer}>
           <Text style={{ color: "gray" }}>Already have an account? </Text>
-        <Pressable onPress={()=>navigation!.navigate("LoginScreen")}>
+        <Pressable onPress={()=>navigation.navigate("LoginScreen")}>
           <Text style={{ color: "#284db4", fontWeight: "bold" }}>
             Log In
           </Text></Pressable>

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { MenuSheets } from './MenuSheet';
+import { NavigationProps } from '../../navigation';
 
-export const PHeader = () => {
+export const PHeader: React.FC<NavigationProps> = ({navigation}) => {
+    const [showBottomSheet, setShowBottomSheet] = useState(false);
+    
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
@@ -19,11 +23,12 @@ export const PHeader = () => {
                         }}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log('Messenger')}>
+                <TouchableOpacity onPress={() => setShowBottomSheet(true)}>
                     <Ionicons name="md-reorder-three-outline" size={30} color="white" />
 
                 </TouchableOpacity>
             </View>
+            <MenuSheets visible={showBottomSheet} onClose={()=>setShowBottomSheet(false)} navigation={navigation} />
         </View>
     );
 };

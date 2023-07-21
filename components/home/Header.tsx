@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import { HeaderPopup } from './HeaderPopup';
+import { Button } from 'react-native-elements';
+import { NavigationProps } from '../../navigation';
+import { StackHeaderProps } from '@react-navigation/stack';
 
-export const Header = () => {
+
+
+export const Header: React.FC<NavigationProps> = ({navigation}) => {
+    const [ showPopup, setShowPopup] = useState(false)
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+                style={{ flexDirection: "row", alignItems: "center" }}
+                onPress={()=> setShowPopup(true)}
+            >
                 <Image source={require('../../assets/header-logo.png')} style={styles.logo} />
                 <AntDesign name="down" size={16} color='white' />
-            </View>
-
+            </TouchableOpacity>
+            <HeaderPopup visible={showPopup} onClose={() => setShowPopup(false)} navigation={navigation} />
             <View style={styles.iconsContainer}>
                 <TouchableOpacity onPress={() => console.log('Like')}>
                     <AntDesign name="hearto" size={24} color="white" />

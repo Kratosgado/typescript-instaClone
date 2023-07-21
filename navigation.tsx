@@ -1,32 +1,48 @@
 import React from 'react'
-import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack'
+import { StackHeaderProps, StackNavigationProp, createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { LoginScreen } from './screens/LoginScreen';
 import { SignUpScreen } from './screens/SignupScreen';
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView } from 'react-native'
-import { BottomBar } from './components/home/BottomBar'
+import { BottomBar } from './components/home/BottomBar';
+import { FollowingScreen } from './components/home/Following';
+import { FavouriteScreen } from './components/home/Favourites';
 
-export type RootStackParamList = {
-  HomeScreen: undefined;
+
+
+type ScreenList = {
+  BottomBar: undefined;
   LoginScreen: undefined;
   SignupScreen: undefined;
+  FollowingScreen: undefined;
+  FavouriteScreen: undefined;
 };
-type Screens = "HomeScreen" | "LoginScreen" | "SignupScreen"
-type StackProps = StackNavigationProp<RootStackParamList, Screens>;
+type Screens =  "LoginScreen" | "SignupScreen" | "FollowingScreen" | "BottomBar" | "FavouriteScreen"
+
 export type NavigationProps = {
-  navigation?: StackProps;
+  navigation: StackNavigationProp<ScreenList, Screens>;
 };
 
-const Stack = createStackNavigator<RootStackParamList>()
+const Stack = createStackNavigator<ScreenList>()
 
 export const SignedInStack = () => (
   <NavigationContainer>
-      <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
-        <StatusBar style="inverted" hidden={true} />
-        <BottomBar />
-      </SafeAreaView>
-    </NavigationContainer>
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
+      <StatusBar hidden={true} />
+      <Stack.Navigator
+        initialRouteName="BottomBar"
+      >
+        <Stack.Screen
+          name='BottomBar'
+          component={BottomBar}
+          options={{headerShown: false}}
+           />
+        <Stack.Screen name="FollowingScreen" component={FollowingScreen} />
+        <Stack.Screen name="FavouriteScreen" component={FavouriteScreen} />
+      </Stack.Navigator>
+    </SafeAreaView>
+  </NavigationContainer>
 )
 
 export const SignedOutStack = () => (

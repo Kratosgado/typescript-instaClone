@@ -89,6 +89,7 @@ const PostFooter: React.FC<PostFooterProps> = ({ caption }) => {
                     </TouchableOpacity>
                 </View>
             </View>
+            
             <View style={styles.commentContainer}>
                 <Image
                     source={{ uri: 'https://avatars.githubusercontent.com/u/29388627?v=4' }}
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 40,
         borderRadius: 20,
-        backgroundColor: '#333333',
+        backgroundColor: '#131212',
         color: 'white',
         paddingHorizontal: 12,
         fontSize: 14,
