@@ -17,10 +17,7 @@ const HomeScreen: React.FC<NavigationProps> = ({navigation}) => {
     };
 
     let posts: PostProps[] = POSTS.map((post) => ({
-        username: post.username,
-        profilePicture: post.profile_picture,
-        image: post.imageUrl,
-        caption: post.caption,
+        ...post
     }))
 
     return (
@@ -28,8 +25,8 @@ const HomeScreen: React.FC<NavigationProps> = ({navigation}) => {
             <Header navigation={navigation}/>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Stories stories={stories.stories} />
-                {posts.map((post, index) => (
-                    <Post key={index} {...post} />
+                {posts.map((post) => (
+                    <Post key={post.postId} {...post} navigation={navigation}/>
                 ))}
             </ScrollView>
         </View>

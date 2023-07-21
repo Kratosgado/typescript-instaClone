@@ -1,58 +1,64 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, Pressable } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { Ionicons, Feather, FontAwesome, Entypo } from '@expo/vector-icons';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProps } from '../../navigation';
+import { CommentSheet } from './PostCommentSheet';
 
-export type PostProps = {
-    username: string;
-    profilePicture: string;
-    image: string;
-    caption: string;
+export type Comment = {
+    id: string,
+    username: string,
+    comment: string,
 }
 
-export const Post: React.FC<PostProps> = (postProps: PostProps) => {
-    const { username, profilePicture, image, caption } = postProps;
+export type PostProps =  {
+    userId: string;
+    postId: string;
+    username: string;
+    profile_picture: string;
+    imageUrl: string;
+    likes: number;
+    caption: string;
+    comments:  Comment[]
+}
 
+export const Post: React.FC<PostProps & NavigationProps> = (postProps) => {
     return (
         <View style={styles.container}>
             <Divider width={0.5} color='white' />
-            <PostHeader username={username} profilePicture={profilePicture} />
-            <PostImage image={image} />
-            <PostFooter caption={caption} />
+            <PostHeader {...postProps} />
+            <PostImage {...postProps} />
+            <PostFooter {...postProps} />
         </View>
     );
 };
 
-type PostHeaderProps = {
-    username: string;
-    profilePicture: string;
-}
 
-const PostHeader: React.FC<PostHeaderProps> = ({ username, profilePicture }) => {
+const PostHeader: React.FC<PostProps> = (post) => {
     return (
         <View style={styles.postHeaderContainer}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Image source={{ uri: profilePicture }} style={styles.profilePicture} />
-                <Text style={styles.username}>{username}</Text>
+                <Image source={{ uri: post.profile_picture }} style={styles.profile_picture} />
+                <Text style={styles.username}>{post.username}</Text>
             </View>
             <Entypo name="dots-three-vertical" size={24} color='white' />
         </View>
     );
 };
 
-type PostImageProps = {
-    image: string;
-}
-
-const PostImage: React.FC<PostImageProps> = ({ image }) => {
-    return <Image source={{ uri: image }} style={styles.postImage} />;
+const PostImage: React.FC<PostProps> = (post) => {
+    return <Image source={{ uri: post.imageUrl }} style={styles.postImage} />;
 };
 
-interface PostFooterProps {
-    caption: string;
-}
 
-const PostFooter: React.FC<PostFooterProps> = ({ caption }) => {
+const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
+    const [showCommentSheet, setShowCommentSheet] = useState(false);
+    const auth = getAuth();
+    const db = getFirestore();
+
     const handleLike = () => {
         // Handle like functionality
     };
@@ -89,7 +95,21 @@ const PostFooter: React.FC<PostFooterProps> = ({ caption }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            
+            <Text style={{color: "white"}}>{post.likes} {post.likes > 1 ? "likes" : "like"} </Text>
+            <Text style={{ color: "white" }} >{post.username}    {post.caption}</Text>
+            {/* Comment session */}
+            <Pressable
+                style={{ padding: 5, bottom: 3 }}
+                onPress={()=>setShowCommentSheet(true)}
+            >
+            <Text style={{ color: "gray" }}>
+                view {post.comments.length > 1 ? "all " : " "}
+                {post.comments.length}
+                {post.comments.length > 1 ? " comments" : "comment"}
+                </Text>
+            </Pressable>
+            {/* Show commentSheet */}
+            <CommentSheet visible={showCommentSheet} onClose={()=>setShowCommentSheet(false)} navigation={navigation.navigation} {...post} />
             <View style={styles.commentContainer}>
                 <Image
                     source={{ uri: 'https://avatars.githubusercontent.com/u/29388627?v=4' }}
@@ -122,7 +142,7 @@ const styles = StyleSheet.create({
         margin: 10,
         justifyContent: "space-between"
     },
-    profilePicture: {
+    profile_picture: {
         width: 40,
         height: 40,
         borderRadius: 20,

@@ -6,10 +6,14 @@ import { SearchScreen } from "../../screens/SearchScreen";
 import { ReelScreen } from "../../screens/ReelScreen";
 import { AddPostScreen } from "../../screens/AddPostScreen";
 import { ProfileScreen } from "../../screens/ProfileScreeen";
+import { USERS } from "../../data/users";
+import { User } from "../profile/UserInfo";
+import { NavigationProps } from "../../navigation";
 
 const Tab = createBottomTabNavigator();
 
-export const BottomBar = () => {
+export const BottomBar = (navigation: NavigationProps) => {
+    const currentUser: User = USERS[0];
     return (
         <Tab.Navigator  screenOptions={{
             headerShown: false,
@@ -56,7 +60,9 @@ export const BottomBar = () => {
             />
             <Tab.Screen
                 name="ProfileScreen"
-                component={ProfileScreen}
+                component={() => {
+                    return <ProfileScreen navigation={navigation.navigation} {...currentUser}/>
+                } }
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="person-circle" size={size} color={color} />

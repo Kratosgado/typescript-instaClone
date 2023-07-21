@@ -1,7 +1,8 @@
 import React, { useState, FC } from 'react';
-import { View, TextInput, Image, Text, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
+import { View, TextInput, Image, Text, StyleSheet, TouchableOpacity, Pressable, Alert, Platform } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import { NavigationProps } from '../navigation';
+import { createUserWithEmailAndPassword, doc, getAuth, getFirestore, setDoc } from "../firebase";
 
 
 export const SignUpScreen: FC<NavigationProps> = ({navigation}) => {
@@ -9,8 +10,30 @@ export const SignUpScreen: FC<NavigationProps> = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    // Handle login logic here
+  const auth = getAuth();
+  const db = getFirestore();
+
+  const getRandomUserPicture = async () => {
+    const response = await fetch('https://randomuser.me/api')
+    const data = await response.json()
+    return data.results[ 0 ].picture.large
+  }
+
+  const handleSignUp = async () => {
+    try {
+      const authed = await createUserWithEmailAndPassword(auth, email, password)
+      console.log('Firebase Signed Up Successful')
+
+      const userDocRef = doc(db, 'users', authed.user.email!)
+      await setDoc(userDocRef, {
+        username,
+        email,
+        pic: await getRandomUserPicture(),
+        uid: authed.user.uid,
+      })
+    } catch (error) {
+      Platform.OS != 'web' ? Alert.alert("Couldn't sign in") : alert(error)
+    }
     console.log('Login:', email, password);
   };
 
