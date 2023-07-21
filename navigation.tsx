@@ -11,16 +11,13 @@ import { Archive } from './components/profile/SheetScreens/Archive';
 import { CloseFriends } from './components/profile/SheetScreens/CloseFriends';
 import { OrdersPayments } from './components/profile/SheetScreens/OrdersPayments';
 import { Settings } from './components/profile/SheetScreens/Settings';
-import { Supervision } from './components/profile/SheetScreens/Supervision';
 import { QRCode } from './components/profile/SheetScreens/QRCode';
-import { ProfileScreen } from './screens/ProfileScreeen';
-import { useNavigation } from '@react-navigation/native';
-import { USERS } from './data/users';
+import { OtherUsersProfile } from './screens/OtherUsersProfile';
 import { User } from './components/profile/UserInfo';
 
 
 
-type ScreenList = {
+export type ScreenList = {
   BottomBar: undefined;
   LoginScreen: undefined;
   SignupScreen: undefined;
@@ -32,10 +29,10 @@ type ScreenList = {
   Settings: undefined;
   Supervision: undefined;
   QRCode: undefined
-  ProfileScreen: undefined
+  OtherUsersProfile: User | undefined
 };
 export type Screens = "LoginScreen" | "SignupScreen" | "FollowingScreen" | "BottomBar" | "FavouriteScreen" 
-              | "Archive" | "CloseFriends" | "OrdersPayments" | "Settings" | "Supervision" | "QRCode" | "ProfileScreen"
+              | "Archive" | "CloseFriends" | "OrdersPayments" | "Settings" | "Supervision" | "QRCode" | "OtherUsersProfile"
 
 export type NavigationProps = {
   navigation: StackNavigationProp<ScreenList, Screens>;
@@ -61,11 +58,7 @@ export const SignedInStack = () => (
         <Stack.Screen name="OrdersPayments" component={OrdersPayments} />
         <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="QRCode" component={QRCode} />
-      <Stack.Screen name="ProfileScreen" component={() => {
-        const currentUser: User = USERS[0];
-        const navigation = useNavigation<NavigationProps>().navigation;
-        return <ProfileScreen navigation={navigation} {...currentUser} />
-      }} />
+      <Stack.Screen name="OtherUsersProfile" component={OtherUsersProfile} options={{headerShown: false}}/>
       </Stack.Navigator>
     </SafeAreaView>
 )

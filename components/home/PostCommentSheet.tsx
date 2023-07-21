@@ -46,19 +46,24 @@ const CommentItem: React.FC<NavigationProps & Comment> = ({ navigation, ...comme
     return USERS.findIndex((user)=> user.id === comment.id)
   }
   const user: User = USERS[findUserIndexById(comment.id)]
+  const handleProfilePress = () => {
+    // Navigate to the OtherUsersProfile screen when a comment is pressed
+    navigation.navigate('OtherUsersProfile', user);
+  };
+
   return (
     <View style={styles.sheetTile}>
-      <Pressable onPress={() => navigation.navigate("ProfileScreen")}>
+      <Pressable onPress={handleProfilePress}>
         <Image source={{uri: user.profilePicture}} style={{height: 40, width: 40, borderRadius: 20, alignSelf: "center"}} />
       </Pressable>
-      <View style={{paddingLeft: 10, top: 5}}>
+      <View style={{paddingLeft: 10, top: 5, width: "80%"}}>
         <Text style={{ color: "white"}}>{comment.username}</Text>
         <Text style={{ color: "white" }}>{comment.comment}</Text>
         <Pressable>
           <Text style={{ color : "gray"}}>reply</Text>
         </Pressable>
       </View>
-
+      <MaterialCommunityIcons name="heart-outline" size={20} color={"white"} style={{alignSelf: "center"}}/>
     </View>
   )
 }
