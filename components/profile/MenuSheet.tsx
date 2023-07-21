@@ -5,7 +5,6 @@ import { NavigationProps } from '../../navigation';
 import { PopupProps, SheetItemProps, sheetListItems } from './sheetData';
 
 
-
 export const MenuSheets: React.FC<PopupProps> = ({ visible, onClose, navigation }) => {
 
   return (
@@ -25,14 +24,15 @@ export const MenuSheets: React.FC<PopupProps> = ({ visible, onClose, navigation 
   );
 };
 
-const SheetItem: React.FC<SheetItemProps & NavigationProps> = ({name, icon, navigation}) => {
-  return (
-    <Pressable style={{flexDirection: "row", justifyContent: "flex-start"}}>
+const SheetItem: React.FC<SheetItemProps & NavigationProps> = ({ name, icon, screen, navigation }) => (
+    <Pressable
+      onPress={()=>navigation.navigate(screen)}
+      style={{ flexDirection: "row", justifyContent: "flex-start", padding: 14, alignItems: "center"}}
+    >
       <MaterialCommunityIcons name={icon} size={24} color={"white"} />
-      <Text style={{color: "white", fontSize: 16}} >{name}</Text>
+      <Text style={{ color: "white", fontSize: 16, paddingLeft: 10 }}>{name}</Text>
     </Pressable>
   )
-}
 
 const styles = StyleSheet.create({
 
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     position: "absolute",
     padding: 8,
-    height: "60%",
     width: "100%",
     backgroundColor: '#252525',
     borderRadius: 30,
