@@ -1,6 +1,5 @@
 import React from 'react'
 import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from '@react-navigation/native'
 import { LoginScreen } from './screens/LoginScreen';
 import { SignUpScreen } from './screens/SignupScreen';
 import { StatusBar } from 'expo-status-bar'
@@ -40,7 +39,6 @@ export type NavigationProps = {
 const Stack = createStackNavigator<ScreenList>()
 
 export const SignedInStack = () => (
-  <NavigationContainer>
     <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
       <StatusBar hidden={true} />
       <Stack.Navigator
@@ -60,11 +58,9 @@ export const SignedInStack = () => (
         <Stack.Screen name="QRCode" component={QRCode} />
       </Stack.Navigator>
     </SafeAreaView>
-  </NavigationContainer>
 )
 
 export const SignedOutStack = () => (
-  <NavigationContainer>
     <Stack.Navigator
       initialRouteName="LoginScreen"
       screenOptions={{ headerShown: false}}
@@ -72,5 +68,4 @@ export const SignedOutStack = () => (
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="SignupScreen" component={SignUpScreen} />
     </Stack.Navigator>
-  </NavigationContainer>
 )

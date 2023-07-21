@@ -12,6 +12,7 @@ export const MenuSheets: React.FC<PopupProps> = ({ visible, onClose, navigation 
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.backdrop}>
           <View style={styles.sheet}>
+            <View style={{backgroundColor: "white", width: 50, height: 3, alignSelf: "center", borderRadius: 3}}></View>
             {
               sheetListItems.map((item, index) => (
                 <SheetItem key={index} {...item} navigation={navigation}/>

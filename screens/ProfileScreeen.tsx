@@ -5,7 +5,6 @@ import { USERS } from "../data/users"
 import { User } from "../components/profile/UserInfo"
 import { StoryHighlight } from "../components/profile/StoryHighlight"
 import { ProfileTabs } from "../components/profile/ProfileTabs"
-import { NavigationContainer } from "@react-navigation/native"
 import { NavigationProps } from "../navigation"
 
 

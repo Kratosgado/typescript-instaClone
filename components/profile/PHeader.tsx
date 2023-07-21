@@ -9,9 +9,9 @@ export const PHeader: React.FC<NavigationProps> = ({navigation}) => {
     
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
                 <Text style={styles.username}>mbeah_essilfie</Text>
-                <AntDesign name="down" size={16} color='white' />
+                <AntDesign name="down" size={16} color='white'/>
             </View>
 
             <View style={styles.iconsContainer}>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         width: 120,
         height: 25,
         textAlign: "center",
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: "bold",
         color: "white"
     },
