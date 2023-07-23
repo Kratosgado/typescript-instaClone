@@ -4,8 +4,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { TabView, TabBar, SceneMap, SceneRendererProps } from 'react-native-tab-view';
 
 import { GridPost } from './GridPosts';
+import { NavigationProps } from '../../navigation';
 
-export const ProfileTabs = () => {
+export const ProfileTabs = ({navigation}: NavigationProps) => {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
 
@@ -20,7 +21,25 @@ export const ProfileTabs = () => {
     { key: 'reels', title: 'Reels', icon: 'videocam-outline' },
     { key: 'saved', title: 'Saved', icon: 'person-outline' },
   ]);
-
+  const PostsTab = () => {
+  
+    return (
+      <GridPost navigation={navigation}/>
+    );
+  };
+  
+  const ReelsTab = () => {
+    return (
+      <GridPost navigation={navigation} />
+    );
+  };
+  
+  const SavedTab = () => {
+    return (
+      <GridPost navigation={navigation} />
+    );
+  };
+  
   const renderScene = SceneMap({
     posts: PostsTab,
     reels: ReelsTab,
@@ -55,24 +74,6 @@ export const ProfileTabs = () => {
   );
 };
 
-const PostsTab = () => {
-  
-  return (
-    <GridPost />
-  );
-};
-
-const ReelsTab = () => {
-  return (
-    <GridPost />
-  );
-};
-
-const SavedTab = () => {
-  return (
-    <GridPost />
-  );
-};
 
 
 const styles = StyleSheet.create({

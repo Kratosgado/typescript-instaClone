@@ -28,48 +28,15 @@ export type PostProps =  {
 }
 
 export const Post: React.FC<PostProps & NavigationProps> = (postProps) => {
-    return (
-        <View style={styles.container}>
-            <Divider width={0.5} color='white' />
-            <PostHeader {...postProps} />
-            <PostImage {...postProps} />
-            <PostFooter {...postProps} />
-        </View>
-    );
-};
-
-
-export const PostHeader: React.FC<PostProps & NavigationProps> = ( {navigation, ...post}) => {
-    function findUserIndexById(id:string) : number{
-        return USERS.findIndex((user)=> user.id === post.userId)
-      }
-      const user: User = USERS[findUserIndexById(post.userId)]
-    return (
-        <View style={styles.postHeaderContainer}>
-            <Pressable style={{ flexDirection: "row", alignItems: "center" }} onPress={()=>navigation.navigate("OtherUsersProfile", user)}>
-                <Image source={{ uri: post.profile_picture }} style={styles.profile_picture} />
-                <Text style={styles.username}>{post.username}</Text>
-            </Pressable>
-            <Entypo name="dots-three-vertical" size={24} color='white' />
-        </View>
-    );
-};
-
-const PostImage: React.FC<PostProps> = (post) => {
-    return <Image source={{ uri: post.imageUrl }} style={styles.postImage} />;
-};
-
-
-const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
     const [showCommentSheet, setShowCommentSheet] = useState(false);
     const [liked, setLiked] = useState(false);
-    const [likeCount, setLikeCount] = useState(post.likes);
+    const [likeCount, setLikeCount] = useState(postProps.likes);
     const auth = getAuth();
     const db = getFirestore();
 
     useEffect(() => {
         // If the initial like count is greater than 0, the user has liked the post
-        setLiked(post.likes > 0);
+        setLiked(postProps.likes > 0);
       }, []);
     
       const handleLike = () => {
@@ -82,7 +49,6 @@ const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
         setLiked((prevLiked) => !prevLiked);
       };
     
-
     const handleComment = () => {
         // Handle comment functionality
     };
@@ -94,7 +60,17 @@ const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
     const handleBookmark = () => {
         // Handle bookmark functionality
     };
+    
+    const PostImage: React.FC<PostProps> = (post) => {
+        return (
+            <Pressable onMagicTap={()=>handleLike}>
+                <Image source={{ uri: post.imageUrl }} style={styles.postImage} />
+        </Pressable>
+    )
+    };
 
+    const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
+    
     return (
         <View style={styles.postFooterContainer}>
             <View style={styles.iconsContainer}>
@@ -151,6 +127,34 @@ const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
         </View>
     );
 };
+
+    return (
+        <View style={styles.container}>
+            <Divider width={0.5} color='white' />
+            <PostHeader {...postProps} />
+            <PostImage {...postProps} />
+            <PostFooter {...postProps} />
+        </View>
+    );
+};
+
+
+export const PostHeader: React.FC<PostProps & NavigationProps> = ( {navigation, ...post}) => {
+    function findUserIndexById(id:string) : number{
+        return USERS.findIndex((user)=> user.id === post.userId)
+      }
+      const user: User = USERS[findUserIndexById(post.userId)]
+    return (
+        <View style={styles.postHeaderContainer}>
+            <Pressable style={{ flexDirection: "row", alignItems: "center" }} onPress={()=>navigation.navigate("OtherUsersProfile", user)}>
+                <Image source={{ uri: post.profile_picture }} style={styles.profile_picture} />
+                <Text style={styles.username}>{post.username}</Text>
+            </Pressable>
+            <Entypo name="dots-three-vertical" size={24} color='white' />
+        </View>
+    );
+};
+
 
 
 
