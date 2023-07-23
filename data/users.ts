@@ -3,8 +3,8 @@
 export const USERS = [
     {
         id: 'user1',
-        username: 'Kratos',
-        profilePicture: 'https://pbs.twimg.com/profile_images/1634523963819786240/m_LFngKS_400x400.jpg',
+        username: 'Klynique',
+        profilePicture: 'https://i.postimg.cc/prkjHvjt/klynique.jpg',
         posts: 12,
         followers: 456,
         following: 78,

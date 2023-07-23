@@ -4,7 +4,7 @@ export const POSTS = [
   {
     postId: "sdfhw2343r",
     imageUrl:
-      'https://images.pexels.com/photos/92248/pexels-photo-92248.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      'https://i.postimg.cc/prkjHvjt/klynique.jpg',
     username: USERS[0].username,
     userId: USERS[0].id,
     likes: 7870,
