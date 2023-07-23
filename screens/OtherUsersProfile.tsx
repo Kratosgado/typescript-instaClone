@@ -1,19 +1,12 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native"
+import { View, StyleSheet, } from "react-native"
 import { PHeader } from "../components/profile/PHeader"
 import { UserInfo } from "../components/profile/UserInfo"
-import { USERS } from "../data/users"
-import { User } from "../components/profile/UserInfo"
 import { StoryHighlight } from "../components/profile/StoryHighlight"
 import { ProfileTabs } from "../components/profile/ProfileTabs"
-import { NavigationProps, ScreenList } from "../navigation"
-import { RouteProp } from "@react-navigation/native"
+import { NavigationWithParams } from "../navigation"
 
-type OtherUsersProfileScreenProps = NavigationProps & {
-   route: RouteProp<ScreenList, 'OtherUsersProfile'>;
- };
- 
 
-export const OtherUsersProfile: React.FC<OtherUsersProfileScreenProps> = ({ route, navigation }) => {
+export const OtherUsersProfile: React.FC<NavigationWithParams> = ({ route, navigation }) => {
    
     return (
         <View style={styles.container}>

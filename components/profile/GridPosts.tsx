@@ -7,8 +7,8 @@ type PostProps = {
   }
   
 export const GridPost: React.FC = () => {
-    let posts: PostProps[] = POSTS.map((post, index) => ({
-      id: String(index),
+    let posts: PostProps[] = POSTS.map((post) => ({
+      id: post.postId,
       imageUrl: post.imageUrl
     }))
     

@@ -9,10 +9,10 @@ import { NavigationProps } from '../navigation';
 
 const HomeScreen: React.FC<NavigationProps> = ({navigation}) => {
     let stories: StoryList = {
-        stories: USERS.map((user) => ({
-            picture: user.profilePicture,
-            username: user.username,
-            id: user.id
+        stories: POSTS.map((post) => ({
+            id: post.postId,
+            picture: post.imageUrl,
+            username:post.username,
         })),
     };
 
@@ -24,7 +24,7 @@ const HomeScreen: React.FC<NavigationProps> = ({navigation}) => {
         <View style={styles.container}>
             <Header navigation={navigation}/>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <Stories stories={stories.stories} />
+                <Stories stories={stories.stories} navigation={navigation}/>
                 {posts.map((post) => (
                     <Post key={post.postId} {...post} navigation={navigation}/>
                 ))}

@@ -14,6 +14,9 @@ import { Settings } from './components/profile/SheetScreens/Settings';
 import { QRCode } from './components/profile/SheetScreens/QRCode';
 import { OtherUsersProfile } from './screens/OtherUsersProfile';
 import { User } from './components/profile/UserInfo';
+import { RouteProp } from '@react-navigation/native';
+import { ViewPostScreen } from './screens/ViewPostScreen';
+import { PostProps } from './components/home/Posts';
 
 
 
@@ -30,13 +33,19 @@ export type ScreenList = {
   Supervision: undefined;
   QRCode: undefined
   OtherUsersProfile: User | undefined
+  ViewPostScreen: PostProps | undefined
 };
-export type Screens = "LoginScreen" | "SignupScreen" | "FollowingScreen" | "BottomBar" | "FavouriteScreen" 
+export type Screens = "ViewPostScreen"| "LoginScreen" | "SignupScreen" | "FollowingScreen" | "BottomBar" | "FavouriteScreen" 
               | "Archive" | "CloseFriends" | "OrdersPayments" | "Settings" | "Supervision" | "QRCode" | "OtherUsersProfile"
 
 export type NavigationProps = {
   navigation: StackNavigationProp<ScreenList, Screens>;
 };
+export type NavigationWithParams = NavigationProps & {
+   route: RouteProp<ScreenList, "OtherUsersProfile">;
+};
+ 
+ 
 
 const Stack = createStackNavigator<ScreenList>()
 
@@ -58,6 +67,7 @@ export const SignedInStack = () => (
         <Stack.Screen name="OrdersPayments" component={OrdersPayments} />
         <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="QRCode" component={QRCode} />
+      <Stack.Screen name="ViewPostScreen" component={ViewPostScreen} options={{headerShown: false}} />
       <Stack.Screen name="OtherUsersProfile" component={OtherUsersProfile} options={{headerShown: false}}/>
       </Stack.Navigator>
     </SafeAreaView>

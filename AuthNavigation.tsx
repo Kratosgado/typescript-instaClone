@@ -7,7 +7,9 @@ export const AuthNavigation = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const auth = getAuth()
 
-  const userHandler = (user: User | null) => user ? setCurrentUser(user) : setCurrentUser(null)
+  const userHandler = (user: User | null) => {
+    return user ? setCurrentUser(user) : setCurrentUser(null);
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => userHandler(user))

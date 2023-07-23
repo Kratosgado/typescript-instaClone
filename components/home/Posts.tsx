@@ -7,6 +7,8 @@ import { getFirestore } from 'firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProps } from '../../navigation';
 import { CommentSheet } from './PostCommentSheet';
+import { USERS } from '../../data/users';
+import { User } from '../profile/UserInfo';
 
 export type Comment = {
     id: string,
@@ -37,13 +39,17 @@ export const Post: React.FC<PostProps & NavigationProps> = (postProps) => {
 };
 
 
-const PostHeader: React.FC<PostProps> = (post) => {
+export const PostHeader: React.FC<PostProps & NavigationProps> = ( {navigation, ...post}) => {
+    function findUserIndexById(id:string) : number{
+        return USERS.findIndex((user)=> user.id === post.userId)
+      }
+      const user: User = USERS[findUserIndexById(post.userId)]
     return (
         <View style={styles.postHeaderContainer}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Pressable style={{ flexDirection: "row", alignItems: "center" }} onPress={()=>navigation.navigate("OtherUsersProfile", user)}>
                 <Image source={{ uri: post.profile_picture }} style={styles.profile_picture} />
                 <Text style={styles.username}>{post.username}</Text>
-            </View>
+            </Pressable>
             <Entypo name="dots-three-vertical" size={24} color='white' />
         </View>
     );

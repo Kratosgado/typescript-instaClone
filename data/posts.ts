@@ -24,7 +24,7 @@ export const POSTS = [
     ],
   },
   {
-    userId: USERS[0].id,
+    userId: USERS[1].id,
     postId: "slfhdsjr4352",
     imageUrl:
       'https://images.pexels.com/photos/4963919/pexels-photo-4963919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -41,7 +41,7 @@ export const POSTS = [
     ],
   },
   {
-    userId: USERS[0].id,
+    userId: USERS[2].id,
     postId: "ldshfwe98u9h",
     imageUrl:
       'https://images.pexels.com/photos/8029710/pexels-photo-8029710.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -85,7 +85,7 @@ export const POSTS = [
     ],
   },
   {
-    userId: USERS[0].id,
+    userId: USERS[1].id,
     postId: "dljfew9034",
     imageUrl:
       'https://images.pexels.com/photos/4963919/pexels-photo-4963919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -102,7 +102,7 @@ export const POSTS = [
     ],
   },
   {
-    userId: USERS[0].id,
+    userId: USERS[2].id,
     postId: "jpsdofijsd932",
     imageUrl:
       'https://images.pexels.com/photos/8029710/pexels-photo-8029710.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
