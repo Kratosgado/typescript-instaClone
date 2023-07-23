@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, Pressable } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, Pressable, Animated } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { Ionicons, Feather, FontAwesome, Entypo } from '@expo/vector-icons';
 import { getAuth } from 'firebase/auth';
@@ -62,12 +62,26 @@ const PostImage: React.FC<PostProps> = (post) => {
 
 const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
     const [showCommentSheet, setShowCommentSheet] = useState(false);
+    const [liked, setLiked] = useState(false);
+    const [likeCount, setLikeCount] = useState(post.likes);
     const auth = getAuth();
     const db = getFirestore();
 
-    const handleLike = () => {
-        // Handle like functionality
-    };
+    useEffect(() => {
+        // If the initial like count is greater than 0, the user has liked the post
+        setLiked(post.likes > 0);
+      }, []);
+    
+      const handleLike = () => {
+        // Toggle the liked state and increase/decrease the like count accordingly
+        if (liked) {
+          setLikeCount((prevLikeCount) => prevLikeCount - 1);
+        } else {
+          setLikeCount((prevLikeCount) => prevLikeCount + 1);
+        }
+        setLiked((prevLiked) => !prevLiked);
+      };
+    
 
     const handleComment = () => {
         // Handle comment functionality
@@ -86,9 +100,12 @@ const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
             <View style={styles.iconsContainer}>
                 <View style={styles.iconGroup}>
                     <TouchableOpacity onPress={handleLike}>
-                        <Ionicons name="heart-outline" size={24} color="white" style={styles.icon} />
+                    <Animated.View style={{ transform: [{ scale: liked ? 1.2 : 1 }] }}>
+                    {/* Use Animated.View to animate the scale when liked */}
+                        <Ionicons name={liked ? 'heart' : 'heart-outline'} size={24} color={liked ? 'red' : 'white'} style={styles.icon} />
+                    </Animated.View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={handleComment}>
+                    <TouchableOpacity onPress={()=>setShowCommentSheet(true)}>
                         <Ionicons name="chatbubble-outline" size={24} color="white" style={styles.icon} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleShare}>
@@ -101,7 +118,7 @@ const PostFooter: React.FC<PostProps> = (post, navigation: NavigationProps) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            <Text style={{color: "white"}}>{post.likes} {post.likes > 1 ? "likes" : "like"} </Text>
+            <Text style={{color: "white"}}>{likeCount} {likeCount > 1 ? "likes" : "like"} </Text>
             <Text style={{ color: "white" }} >{post.username}    {post.caption}</Text>
             {/* Comment session */}
             <Pressable
@@ -144,13 +161,13 @@ const styles = StyleSheet.create({
     postHeaderContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        height: 60,
+        height: 40,
         margin: 10,
         justifyContent: "space-between"
     },
     profile_picture: {
-        width: 40,
-        height: 40,
+        width: 35,
+        height: 35,
         borderRadius: 20,
         marginRight: 8,
     },

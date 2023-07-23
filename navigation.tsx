@@ -61,7 +61,9 @@ export const SignedInStack = () => (
           options={{headerShown: false}}
            />
         <Stack.Screen name="FollowingScreen" component={FollowingScreen} />
-        <Stack.Screen name="FavouriteScreen" component={FavouriteScreen} />
+      <Stack.Screen name="FavouriteScreen" component={FavouriteScreen}
+        options={{ title: "Favourites", headerTintColor: "white", headerStyle: {backgroundColor: "black"} }}
+      />
         <Stack.Screen name="Archive" component={Archive} />
         <Stack.Screen name="CloseFriends" component={CloseFriends} />
         <Stack.Screen name="OrdersPayments" component={OrdersPayments} />

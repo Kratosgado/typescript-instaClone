@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, AntDesign, Octicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import HomeScreen from "../../screens/HomeScreen";
@@ -60,13 +61,9 @@ export const BottomBar = (navigation: NavigationProps) => {
             />
             <Tab.Screen
                 name="ProfileScreen"
-                component={() => {
-                    return <ProfileScreen navigation={navigation.navigation} {...currentUser}/>
-                } }
+                component={ProfileScreen}
                 options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="person-circle" size={size} color={color} />
-                    ),
+                    tabBarIcon: ({ color, size }) => <Image source={{uri: currentUser.profilePicture}} style={{height: 30, width: 30, borderWidth: 2, borderColor: "orange", borderRadius: 15}} />,
                 }}
             />
         </Tab.Navigator>
