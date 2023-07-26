@@ -30,8 +30,8 @@ export const CommentSheet: React.FC<PopupProps & PostProps> = ({ visible, onClos
               }}>
             </View>
             {
-              post.comments.map((comment) => (
-                <CommentItem navigation={navigation} {...comment} />
+              post.comments.map((comment, index) => (
+                <CommentItem key={index} navigation={navigation} {...comment} />
               ))
             }
           </View>

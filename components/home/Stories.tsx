@@ -25,7 +25,7 @@ export const Stories: React.FC<StoryList & NavigationProps> = ({ stories, naviga
         return (
             <Pressable onPress={() => navigation.navigate('ViewPostScreen', post)}>
                 <LinearGradient 
-                    colors={['#e00909', '#eb2c17', '#d05e07', '#d05e07','#d05e07']}
+                    colors={['#e00909','#e00909', '#eb2c17', '#d05e07', '#d05e07','#d05e07','#e00909']}
                     style={styles.storyItem}
                 >
                 <View style={styles.storyItem} >
