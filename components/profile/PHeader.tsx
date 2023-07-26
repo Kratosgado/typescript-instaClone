@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet, Text, Pressable } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { MenuSheets } from './MenuSheet';
 import { NavigationProps } from '../../navigation';
+import { UsersSheet } from './UsersSheet';
 
 export const PHeader: React.FC<NavigationProps> = ({navigation}) => {
     const [showBottomSheet, setShowBottomSheet] = useState(false);
+    const [showUserSheet, setShowUsersSheet] = useState(false);
     
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
+            <Pressable
+                onPress={()=>setShowUsersSheet(true)}
+                style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
                 <Text style={styles.username}>mbeah_essilfie</Text>
                 <AntDesign name="down" size={16} color='white'/>
-            </View>
-
+            </Pressable>
+            <UsersSheet visible={showUserSheet} onClose={()=>setShowUsersSheet(false)} navigation={navigation} />
             <View style={styles.iconsContainer}>
                 <TouchableOpacity>
                     <Image

@@ -4,7 +4,7 @@ import { LoginScreen } from './screens/LoginScreen';
 import { SignUpScreen } from './screens/SignupScreen';
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView } from 'react-native'
-import { BottomBar } from './components/home/BottomBar';
+import { BottomBar } from './components/BottomBar';
 import { FollowingScreen } from './components/home/Following';
 import { FavouriteScreen } from './components/home/Favourites';
 import { Archive } from './components/profile/SheetScreens/Archive';

@@ -2,14 +2,14 @@ import React from "react";
 import { Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, AntDesign, Octicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import HomeScreen from "../../screens/HomeScreen";
-import { SearchScreen } from "../../screens/SearchScreen";
-import { ReelScreen } from "../../screens/ReelScreen";
-import { AddPostScreen } from "../../screens/AddPostScreen";
-import { ProfileScreen } from "../../screens/ProfileScreeen";
-import { USERS } from "../../data/users";
-import { User } from "../profile/UserInfo";
-import { NavigationProps } from "../../navigation";
+import HomeScreen from "../screens/HomeScreen";
+import { SearchScreen } from "../screens/SearchScreen";
+import { ReelScreen } from "../screens/ReelScreen";
+import { AddPostScreen } from "../screens/AddPostScreen";
+import { ProfileScreen } from "../screens/ProfileScreeen";
+import { USERS } from "../data/users";
+import { User } from "./profile/UserInfo";
+import { NavigationProps } from "../navigation";
 
 const Tab = createBottomTabNavigator();
 
