@@ -39,7 +39,7 @@ export const USERS = [
     },
     {
         id: 'user5',
-        username: 'Kill Code',
+        username: 'PayDesmond',
         profilePicture: 'https://pbs.twimg.com/profile_images/1634523963819786240/m_LFngKS_400x400.jpg',
         posts: 12,
         followers: 456,
@@ -57,7 +57,7 @@ export const USERS = [
     },
     {
         id: 'user7',
-        username: 'Kill it ',
+        username: 'Gyebi',
         profilePicture: 'https://randomuser.me/api/portraits/men/31.jpg',
         posts: 15,
         followers: 789,
@@ -66,7 +66,7 @@ export const USERS = [
     },
     {
         id: 'user8',
-        username: 'A new boy',
+        username: 'Angelo',
         profilePicture: 'https://randomuser.me/api/portraits/women/2.jpg',
         posts: 5,
         followers: 123,
