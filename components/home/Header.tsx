@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { HeaderPopup } from './HeaderPopup';
-import { Button } from 'react-native-elements';
 import { NavigationProps } from '../../navigation';
-import { StackHeaderProps } from '@react-navigation/stack';
 
 
 

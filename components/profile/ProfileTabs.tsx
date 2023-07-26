@@ -15,25 +15,21 @@ export const ProfileTabs = ({navigation}: NavigationProps) => {
     title: string;
     icon: 'grid-outline' | 'videocam-outline' | 'person-outline';
   };
-  
   const [routes] = useState<TabRoute[]>([
     { key: 'posts', title: 'Posts', icon: 'grid-outline' },
     { key: 'reels', title: 'Reels', icon: 'videocam-outline' },
     { key: 'saved', title: 'Saved', icon: 'person-outline' },
   ]);
   const PostsTab = () => {
-  
     return (
       <GridPost navigation={navigation}/>
     );
   };
-  
   const ReelsTab = () => {
     return (
       <GridPost navigation={navigation} />
     );
   };
-  
   const SavedTab = () => {
     return (
       <GridPost navigation={navigation} />
