@@ -13,7 +13,7 @@ export const USERS = [
     {
         id: 'user2',
         username: 'Binary',
-        profilePicture: 'https://avatars.githubusercontent.com/u/29388627?v=4',
+        profilePicture: 'https://i.postimg.cc/8CRmLyhQ/photo-2023-07-26-09-46-45.jpg',
         posts: 8,
         followers: 234,
         following: 105,
@@ -22,7 +22,7 @@ export const USERS = [
     {
         id: 'user3',
         username: 'Vanessa',
-        profilePicture: 'https://randomuser.me/api/portraits/men/31.jpg',
+        profilePicture: 'https://i.postimg.cc/W3wgsXfB/Whats-App-Image-2023-07-26-at-9-31-07-AM.jpg',
         posts: 15,
         followers: 789,
         following: 156,
@@ -40,7 +40,7 @@ export const USERS = [
     {
         id: 'user5',
         username: 'PayDesmond',
-        profilePicture: 'https://pbs.twimg.com/profile_images/1634523963819786240/m_LFngKS_400x400.jpg',
+        profilePicture: 'https://i.postimg.cc/Ls3QWKMf/Whats-App-Image-2023-07-26-at-10-24-10-AM.jpg',
         posts: 12,
         followers: 456,
         following: 78,
