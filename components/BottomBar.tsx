@@ -63,7 +63,7 @@ export const BottomBar = (navigation: NavigationProps) => {
                 name="ProfileScreen"
                 component={ProfileScreen}
                 options={{
-                    tabBarIcon: ({ color, size }) => <Image source={{uri: currentUser.profilePicture}} style={{height: 30, width: 30, borderWidth: 2, borderColor: "orange", borderRadius: 15}} />,
+                    tabBarIcon: ({ color, size }) => <Image source={{uri: currentUser.profilePicture}} style={{height: 30, width: 30, borderWidth: 2, borderColor: color, borderRadius: 15}} />,
                 }}
             />
         </Tab.Navigator>

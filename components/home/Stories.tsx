@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, ScrollView, Pressable } from 'react-nati
 import { NavigationProps } from '../../navigation';
 import { POSTS } from '../../data/posts';
 import { PostProps } from './Posts';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export type StoryItem = {
     id: string,
@@ -22,11 +23,17 @@ export const Stories: React.FC<StoryList & NavigationProps> = ({ stories, naviga
           }
           const post: PostProps = POSTS[findPostIndexById(id)]
         return (
-            <Pressable onPress={()=>navigation.navigate('ViewPostScreen', post)}>
+            <Pressable onPress={() => navigation.navigate('ViewPostScreen', post)}>
+                <LinearGradient 
+                    colors={['#e00909', '#eb2c17', '#d05e07', '#d05e07','#d05e07']}
+                    style={styles.storyItem}
+                >
                 <View style={styles.storyItem} >
                 <Image source={{ uri: picture }} style={styles.profilePicture} />
+                </View>
+                </LinearGradient>
                 <Text style={styles.username}> {username} </Text>
-            </View>
+
             </Pressable>
         );
     }
@@ -52,17 +59,18 @@ const styles = StyleSheet.create({
     },
     storyItem: {
         alignItems: 'center',
-        width: 64,
-        height: 64,
-        marginHorizontal: 5
+        width: 66,
+        height: 66,
+        marginHorizontal: 5,
+        borderRadius: 32,
     },
     profilePicture: {
-        width: 64,
-        height: 64,
-        borderRadius: 32,
-        resizeMode: "contain",
-        borderColor: "#ff8501",
-        borderWidth: 3,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        resizeMode: "center",
+        top: 3
+        // borderColor: "#ff8501",
     },
     username: {
         marginTop: 8,

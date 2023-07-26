@@ -27,7 +27,7 @@ export const POSTS = [
     userId: USERS[1].id,
     postId: "slfhdsjr4352",
     imageUrl:
-      'https://images.pexels.com/photos/4963919/pexels-photo-4963919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      'https://i.postimg.cc/8CRmLyhQ/photo-2023-07-26-09-46-45.jpg',
     username: USERS[1].username,
     likes: 4721,
     caption: 'Fresh greens from the brooks.',

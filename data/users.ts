@@ -12,7 +12,7 @@ export const USERS = [
     },
     {
         id: 'user2',
-        username: 'Mbeah',
+        username: 'Binary',
         profilePicture: 'https://avatars.githubusercontent.com/u/29388627?v=4',
         posts: 8,
         followers: 234,
@@ -21,7 +21,7 @@ export const USERS = [
     },
     {
         id: 'user3',
-        username: 'Prince',
+        username: 'Vanessa',
         profilePicture: 'https://randomuser.me/api/portraits/men/31.jpg',
         posts: 15,
         followers: 789,
@@ -30,7 +30,7 @@ export const USERS = [
     },
     {
         id: 'user4',
-        username: 'Jeffery',
+        username: 'Ann',
         profilePicture: 'https://randomuser.me/api/portraits/women/2.jpg',
         posts: 5,
         followers: 123,
@@ -48,7 +48,7 @@ export const USERS = [
     },
     {
         id: 'user6',
-        username: 'All the long names',
+        username: 'Ekow',
         profilePicture: 'https://avatars.githubusercontent.com/u/29388627?v=4',
         posts: 8,
         followers: 234,

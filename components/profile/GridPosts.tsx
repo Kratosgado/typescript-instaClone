@@ -9,7 +9,7 @@ export const GridPost: React.FC<NavigationProps> = ({navigation}) => {
       ...post
     }))
     
-    posts = posts.flatMap((item )=>[item, item]) // double the posts list
+    //posts = posts.flatMap((item )=>[item, item]) // double the posts list
     
   const renderItem = ({ item }: { item: PostProps }) => {
       return (
